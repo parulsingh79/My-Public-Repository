@@ -1,0 +1,25 @@
+*----------------------------------------------------------------------*
+
+***INCLUDE ZPS_SUPER_ACCESS_LT_FIELDCAF01.
+
+
+FORM lt_fieldcat .
+
+      lwa_fieldcat-row_pos = 1.
+      lwa_fieldcat-col_pos = 1.
+      lwa_fieldcat-fieldname = 'BNAME'.
+      lwa_fieldcat-tabname = 'LT_PROFILE'.
+      lwa_fieldcat-seltext_l = 'User ID'.
+     APPEND lwa_fieldcat TO lt_fieldcat.
+      CLEAR lwa_fieldcat.
+
+      lwa_fieldcat-row_pos = 1.
+      lwa_fieldcat-col_pos = 2.
+      lwa_fieldcat-fieldname = 'PROFILE'.
+      lwa_fieldcat-tabname = 'LT_PROFILE'.
+      lwa_fieldcat-seltext_l = 'Profile'.
+      APPEND lwa_fieldcat TO lt_fieldcat.
+      CLEAR lwa_fieldcat.
+
+ENDFORM.
+ 
