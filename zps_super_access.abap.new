@@ -1,0 +1,61 @@
+*&---------------------------------------------------------------------*
+*& Report ZPS_SUPER_ACCESS
+*&---------------------------------------------------------------------*
+*&
+**&---------------------------------------------------------------------*
+REPORT zps_super_access.
+
+INCLUDE zps_super_access_data.
+
+PARAMETERS : p_usr TYPE sy-uname OBLIGATORY.
+
+START-OF-SELECTION.
+  SELECT bname profile
+  FROM ust04
+  INTO TABLE lt_profile
+  WHERE bname = p_usr.
+
+  IF sy-subrc = 0.
+
+    LOOP AT lt_profile INTO lwa_profile.
+      IF lwa_profile-profile = 'SAP_ALL' OR lwa_profile-profile = 'SAP_NEW'.
+        lv_superuser = 'X'.
+        EXIT.
+      ELSE.
+        lv_superuser = 'Y'.
+      ENDIF.
+    ENDLOOP.
+
+    IF lv_superuser = 'X'.
+      MESSAGE 'This user has super access' TYPE 'I'.
+    ELSEIF
+       lv_superuser = 'Y'.
+      MESSAGE 'This user does not have super access' TYPE 'I'.
+    ENDIF.
+
+    PERFORM lt_fieldcat.
+
+    IF lv_superuser = 'X'.
+
+      CALL FUNCTION 'REUSE_ALV_GRID_DISPLAY'
+        EXPORTING
+*
+          i_callback_program = sy-repid
+*
+          i_structure_name   = 'UST04'
+*
+        TABLES
+          t_outtab           = lt_profile
+        EXCEPTIONS
+          program_error      = 1
+          OTHERS             = 2.
+      IF sy-subrc <> 0.
+      ENDIF.
+
+    ENDIF.
+
+  ELSE.
+    MESSAGE 'This user does not exit' TYPE 'S' DISPLAY LIKE 'E'.
+  ENDIF.
+
+  INCLUDE zps_super_access_lt_fieldcaf01.
