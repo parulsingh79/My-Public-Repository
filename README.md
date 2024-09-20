@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/9c19b345-a84a-4179-bbea-ded32c0ae560)# Overview
+# Overview
 This SAP ABAP program demonstrates various interactive ALV (ABAP List Viewer) display techniques. 
 It allows the user to select between a Classical Report, an ALV Grid Display, and a Pop-up display, based on employee data stored in a custom table ZPS_EMP_DATA.
 
@@ -31,4 +31,21 @@ It allows the user to select between a Classical Report, an ALV Grid Display, an
 
 
   <img width="658" alt="{E79E6507-E8D1-4647-AAB5-8F1DD917CEFD}" src="https://github.com/user-attachments/assets/ce8eeb4e-851f-496b-a4e3-a9d2f0a943fe">
+
+  * A standard Function Module ( REUSE_ALV_COMMENTARY_WRITE ) to display the header section for the ALV report.
+
+    ![image](https://github.com/user-attachments/assets/892006d0-7ce1-4bfc-8467-0b6873c5b7b1)
+
+    ![image](https://github.com/user-attachments/assets/10e40448-33b1-4fb4-8cfb-828c20ddbb3b)
+
+# Logic for 'SAVE' , 'DELETE' a row and 'ADD' a row is here-
+
+  ![image](https://github.com/user-attachments/assets/900a0ffe-eb41-4c03-83d8-c48e7389db24)
+
+  ![image](https://github.com/user-attachments/assets/94a3c077-1e77-475b-98e7-794524c92ca2)
+
+
+
+
+   
 
